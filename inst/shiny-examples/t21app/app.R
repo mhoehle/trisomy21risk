@@ -18,6 +18,7 @@ library(plotly)
 library(gridExtra)
 
 ##Load special trisomy 21 functions as part of a github package
+##devtools::install_github("hoehleatsu/trisomy21risk")
 library(trisomy21risk)
 
 # Define UI for application that draws a histogram
@@ -67,14 +68,14 @@ ui <- fluidPage(
                    p(),
                    "The statistical details of the Bayesian diagnostic test procedure of the form ",p(),
                    p("posterior odds = likelihood ratio × prior odds",style="margin-left: 120px"),
-                   "can be found in the paper and the blog entry ",a(href="","First Trimester Combined Testing for Trisomy 21"),".", 
-                   "The R code for the calculations as well as the Shiny App are available under an open-source GPL v3.0 license as part of the ", code("trisomy21risk"), "package available from ",a(href="","github."),
+                   "can be found in the paper and the blog entry ",a(href="","First Trimester Combined Testing for Trisomy 21."), 
+                   "The R code for the calculations as well as the Shiny App are available under an open-source GPL v3.0 license as part of the ", code("trisomy21risk"), "package authored by ", a(href="http://www.math.su.se/~hoehle","M. Höhle"), "and available from ",a(href="https://github.com/hoehleatsu/trisomy21risk","github."),
                    p(),
                    "The background risk by maternal age and week of gestation is taken from Table 4 of the paper ",
                    a(href="http://onlinelibrary.wiley.com/doi/10.1046/j.1469-0705.1999.13030167.x/abstract", em("Maternal age- and gestation-specific risk for trisomy 21")),
                    "by Snijders et al. (1999), which is behind a paywall. The crown rump length is translated to gestational age using the equation ",a(href="http://journals.sagepub.com/doi/pdf/10.1179/174313409X448543", em("Gestational age = sqrt(CRL x 1.037) x 8.052 + 23.73.")),"If this gestational age is in week 10, 12 or 14 the values are taken directly from the table. For weeks 11 and 13 a linear interpolation between the risk of the neighbouring weeks is done. The background risks obtained by this procedure appear to differ slightly from the background risk calculation in the Merz et al. (2016) paper which states to use the same tables. You also have the opportunity to enter your individual brackground risk. However, whenever you change the maternal age the background risk is automatically re-calculated.", 
                    p(),
-                   "The nasal bone information is taken from p.21 in ",a(href="http://www.fetalmedicine.com/fmf/FMF-English.pdf","Nicolaides (2004)")," where it says that the nasal bone is ",em("not visible by ultrasound in about 60-70% of fetuses with trisomy 21 and in about 2% of chromosomally normal fetuses."), "If the no information about the visibility of the nasal bone is available a LR of 1 is used.",
+                   "The nasal bone information is taken from p. 21 in ",a(href="http://www.fetalmedicine.com/fmf/FMF-English.pdf","Nicolaides (2004)")," where it says that the nasal bone is ",em("not visible by ultrasound in about 60-70% of fetuses with trisomy 21 and in about 2% of chromosomally normal fetuses."), "If the no information about the visibility of the nasal bone is available a LR of 1 is used.",
                    p(),
                    h3("Further Information"),
                    "Further information about first trimester screening can be obtained from the ",
