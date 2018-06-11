@@ -8,3 +8,7 @@ To demo the package by running the Shiny App run:
     devtools::install_github("hoehleatsu/trisomy21risk")
     library(trisomy21risk)
     trisomy21risk::runExample()
+    
+## Screenshot of the Shiny App
+
+![Screenshot of the Shiny App](shinyapp.png)
