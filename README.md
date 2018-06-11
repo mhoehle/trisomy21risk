@@ -11,4 +11,4 @@ To demo the package by running the Shiny App run:
     
 ## Output
 
-![Screenshot of the Shiny App][shinyapp.png]
+![Screenshot of the Shiny App](shinyapp.png)
