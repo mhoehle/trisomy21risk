@@ -9,6 +9,6 @@ To demo the package by running the Shiny App run:
     library(trisomy21risk)
     trisomy21risk::runExample()
     
-## Output
+## Screenshot of the Shiny App
 
 ![Screenshot of the Shiny App](shinyapp.png)
