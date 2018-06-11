@@ -1,0 +1,16 @@
+Package: trisomy21risk
+Type: Package
+Title: Risk Calculation for T21 from a First Trimester Combined Test
+Version: 1.0
+Date: 2018-06-11
+Authors@R: c(MH = person("Michael", "Höhle",
+                  email = "hoehle@math.su.se",
+                  role = c("aut", "cre")))
+Author: Michael Höhle [aut, cre],
+Maintainer: Michael Höhle <hoehle@math.su.se>
+Description: Calculation and visualization of the trisomy 21 (Down's syndrome) risk calculation from the biomarkers of a first trimester combined test similar (but not identical) to the FMF-Germany algorithm described in Merz et al. (2016) <doi:10.1055/s-0035-1569403>.
+License: GPL-3 v3.0
+Encoding: utf8
+URL: http://github.com/hoehleatsu/trisomy21risk/
+Depends: shiny
+RoxygenNote: 6.0.1
