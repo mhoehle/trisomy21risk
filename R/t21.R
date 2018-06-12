@@ -36,18 +36,21 @@ logbetahCG <- function(crlbe) {
 #' @return The expected value of logPAPPA (from a 10th order polynomial fitted to the data of Merz et al.)
 #' @references 
 #' Merz, E., C. Thode, B. Eiben, and S. Wellek. 2016. “Prenatal Risk Calculation (PRC) 3.0: An Extended Doe-Based First-Trimester Screening Algorithm Allowing for Early Blood Sampling.” Ultrasound International Open 2: E19–E26. doi:10.1055/s-0035-1569403.
+#' 
 #' @export
 logPAPPA <- function(crlbe) {
   -1.95000 + 0.07313*crlbe - 3.63693e-4* crlbe^2 + 1.39983e-20*crlbe^10
 }
 
 #' Compute the DoE (Degrees of Extremeness) of an observation
+#' 
 #' @param y The observed value 
 #' @param y_pred This is the model based expected value
-#' @param ref_lower Lower value of the reference band, i.e. the 5% quantile value 
-#' @param ref_upper Upper value of the reference band, i.e. the 95% quantile value
+#' @param ref_lower Lower value of the reference band, i.e. the 5th percentile value 
+#' @param ref_upper Upper value of the reference band, i.e. the 95th percentile value
+#' @return the degree of extremeness, i.e. the number of times the observation is above or below the distance between the mean and the nearest reference band, respectively.
 #' @references 
-#' Merz, E., C. Thode, B. Eiben, and S. Wellek. 2016. “Prenatal Risk Calculation (PRC) 3.0: An Extended Doe-Based First-Trimester Screening Algorithm Allowing for Early Blood Sampling.” Ultrasound International Open 2: E19–E26. doi:10.1055/s-0035-1569403.
+#' Merz, E., C. Thode, B. Eiben, and S. Wellek. 2016. "Prenatal Risk Calculation (PRC) 3.0: An Extended Doe-Based First-Trimester Screening Algorithm Allowing for Early Blood Sampling." Ultrasound International Open 2: E19–E26. doi:10.1055/s-0035-1569403.
 #'
 #' @export
 doe <- function(y, y_pred, ref_lower, ref_upper) {
@@ -59,10 +62,11 @@ doe <- function(y, y_pred, ref_lower, ref_upper) {
 
 #' Inverse function of the DoE (Degrees of Extremeness), i.e. compute observed value given DoE
 #'
-#' @param y The observed value 
+#' @param doe The observed degree of extremeness value 
 #' @param y_pred This is the model based expected value
-#' @param ref_lower Lower value of the reference band, i.e. the 5% quantile value 
-#' @param ref_upper Upper value of the reference band, i.e. the 95% quantile value
+#' @param ref_lower Lower value of the reference band, i.e. the 5th percentile value 
+#' @param ref_upper Upper value of the reference band, i.e. the 95th percentile value
+#' @return The corresponding y value
 #' @seealso [trisomy21risk::doe]
 #' @export
 doe_inv <- function(doe, y_pred, ref_lower, ref_upper) {
@@ -103,8 +107,8 @@ gestage2crl <- function(gestage) {
 
 #' Reverse function of gestage2crl 
 #' 
-#' @param gestage Gestational age (in days)
-#' @return Crown-rump-length (in mm)
+#' @param crl Crown-rump-length (in mm)
+#' @return gestational age (in weeks)
 #' @seealso [trisomy21risk::gestage2crl]
 #' @export
 crl2gestage <- function(crl) {
@@ -153,8 +157,9 @@ betahCG_qBands <- c(-0.94259, 0.99854)
 #' Compute background risk for T21 as a function of mother's age and gestational age.
 #'
 #' @param age_mother Age of the mother (in years)
-#' @param gestational age (in days) at the time measurements were taken
+#' @param gestage age (in days) at the time measurements were taken
 #' @return Computes prior risk for Trisomy 21 based on the table in Snijders et al. (1999)
+#' @importFrom stats approxfun
 #' @export
 background_risk <- function(age_mother, gestage) {
   ##Rounded week of gestation.
@@ -213,13 +218,15 @@ logbetahCG_corr <- function(betahCG, weight) {
 #' @param weight Weight of the mother (in kg)
 #' @param crlbe Crown-rump-length (in mm) at the time of the PAPP-A and betahCG measurements
 #' @param crl Crown-rump-length (in mm) at the time of the NT measurement
+#' @param nt nuchal translucency of the fetus (in mm)
 #' @param pappa Measured value of PAPP-A in maternal serum (in miU/ml)
 #' @param betahCG Measured value of betahCG in maternal serum (in miU/ml)
 #' @param nasalbone Visibility of a nasal bone on the ultrasound (0/1 or "Unknown")
 #' @param background Background probability for T21
 #' @return Posterior risk of T21.
+#' @importFrom stats dbinom
 #' @references  
-#' Merz, E., C. Thode, B. Eiben, and S. Wellek. 2016. “Prenatal Risk Calculation (PRC) 3.0: An Extended Doe-Based First-Trimester Screening Algorithm Allowing for Early Blood Sampling.” Ultrasound International Open 2: E19–E26. doi:10.1055/s-0035-1569403.
+#' Merz, E., C. Thode, B. Eiben, and S. Wellek. 2016. "Prenatal Risk Calculation (PRC) 3.0: An Extended Doe-Based First-Trimester Screening Algorithm Allowing for Early Blood Sampling." Ultrasound International Open 2: E19–E26. doi:10.1055/s-0035-1569403.
 #' 
 #' @export
 trisomy21 <- function(age, weight, crlbe, crl, nt, pappa, betahCG, nasalbone, background) {
@@ -287,11 +294,20 @@ trisomy21 <- function(age, weight, crlbe, crl, nt, pappa, betahCG, nasalbone, ba
 #' @param eu Vector of length two containing the eu mean and standard deviation
 #' @param aneu Vector of length two containing the aneu mean and standard deviation
 #' @param res21 Names list containing results of the DoE, likelihood ratio, etc. for each of the three biomarkers (+ nasal bone information)
-#' @param f Transformation function for the DoE
+#' @param f Transformation function for the DoE (Default: identity)
+#' @param f_inv Inverse of f (Default: identity)
+#' @param diff_f_inv The derivate of `f_inv` (Default: 1, because this is the derivative of the identify function )
+#' @param pop_quantiles Vector of length two defining the q-population quantiles to use as minimum and maximim for the x-range of the plot (Default: `c(0.001,0.99)`)
 #' @return A `ggplot` object
 #' @seealso [trisomy21risk::trisomy21]
+#' @importFrom stats qnorm dnorm
+#' @import magrittr dplyr ggplot2
+#' @importFrom tidyr gather
 #' @export
-plotLR <- function(what, what_title, what_xlab, eu, aneu, res21, f=identity, f_inv=identity, diff_f_inv=function(x) rep(1,length(x)), f_obs=f, pop_quantiles=c(0.001,0.99)) {
+plotLR <- function(what, what_title, what_xlab, eu, aneu, res21, f=identity, f_inv=identity, diff_f_inv=function(x) rep(1,length(x)), pop_quantiles=c(0.001,0.99)) {
+  ##Fixing no visible notes in R CMD check
+  ##see https://stackoverflow.com/questions/9439256/how-can-i-handle-r-cmd-check-no-visible-binding-for-global-variable-notes-when
+  Population <- pdf <- x <- NULL
   
   ##Range of doE values to look at
   range <- range(res21$doe_list[[what]],
@@ -308,7 +324,7 @@ plotLR <- function(what, what_title, what_xlab, eu, aneu, res21, f=identity, f_i
   
   ##90 tolerance interval in normal population
   q90 <- f(qnorm(c(0.1,0.9), mean=eu[1], sd=eu[2]))
-  poly <- densities_long %>% filter(x >= q90[1] & x <= q90[2] & Population == "Normal")
+  poly <- densities_long %>% dplyr::filter(x >= q90[1] & x <= q90[2] & Population == "Normal")
   polygon <- data.frame( x=c(poly$x, rev(poly$x)),pdf=c(poly$pdf,rep(0,nrow(poly))),Population="Normal")
   
   ##Make the plot

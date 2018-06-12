@@ -11,13 +11,16 @@ doe(y, y_pred, ref_lower, ref_upper)
 
 \item{y_pred}{This is the model based expected value}
 
-\item{ref_lower}{Lower value of the reference band, i.e. the 5% quantile value}
+\item{ref_lower}{Lower value of the reference band, i.e. the 5th percentile value}
 
-\item{ref_upper}{Upper value of the reference band, i.e. the 95% quantile value}
+\item{ref_upper}{Upper value of the reference band, i.e. the 95th percentile value}
+}
+\value{
+the degree of extremeness, i.e. the number of times the observation is above or below the distance between the mean and the nearest reference band, respectively.
 }
 \description{
 Compute the DoE (Degrees of Extremeness) of an observation
 }
 \references{
-Merz, E., C. Thode, B. Eiben, and S. Wellek. 2016. “Prenatal Risk Calculation (PRC) 3.0: An Extended Doe-Based First-Trimester Screening Algorithm Allowing for Early Blood Sampling.” Ultrasound International Open 2: E19–E26. doi:10.1055/s-0035-1569403.
+Merz, E., C. Thode, B. Eiben, and S. Wellek. 2016. "Prenatal Risk Calculation (PRC) 3.0: An Extended Doe-Based First-Trimester Screening Algorithm Allowing for Early Blood Sampling." Ultrasound International Open 2: E19–E26. doi:10.1055/s-0035-1569403.
 }

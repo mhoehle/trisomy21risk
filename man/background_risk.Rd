@@ -9,7 +9,7 @@ background_risk(age_mother, gestage)
 \arguments{
 \item{age_mother}{Age of the mother (in years)}
 
-\item{gestational}{age (in days) at the time measurements were taken}
+\item{gestage}{age (in days) at the time measurements were taken}
 }
 \value{
 Computes prior risk for Trisomy 21 based on the table in Snijders et al. (1999)

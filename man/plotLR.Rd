@@ -5,7 +5,7 @@
 \title{Helper function to plot a likelihood ratio between the eu and aneu population}
 \usage{
 plotLR(what, what_title, what_xlab, eu, aneu, res21, f = identity,
-  f_inv = identity, diff_f_inv = function(x) rep(1, length(x)), f_obs = f,
+  f_inv = identity, diff_f_inv = function(x) rep(1, length(x)),
   pop_quantiles = c(0.001, 0.99))
 }
 \arguments{
@@ -21,7 +21,13 @@ plotLR(what, what_title, what_xlab, eu, aneu, res21, f = identity,
 
 \item{res21}{Names list containing results of the DoE, likelihood ratio, etc. for each of the three biomarkers (+ nasal bone information)}
 
-\item{f}{Transformation function for the DoE}
+\item{f}{Transformation function for the DoE (Default: identity)}
+
+\item{f_inv}{Inverse of f (Default: identity)}
+
+\item{diff_f_inv}{The derivate of `f_inv` (Default: 1, because this is the derivative of the identify function )}
+
+\item{pop_quantiles}{Vector of length two defining the q-population quantiles to use as minimum and maximim for the x-range of the plot (Default: `c(0.001,0.99)`)}
 }
 \value{
 A `ggplot` object

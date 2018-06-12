@@ -9,28 +9,15 @@
 \packageDescription{trisomy21risk}
 }
 \details{
-
-The DESCRIPTION file:
-\packageDESCRIPTION{trisomy21risk}
-\packageIndices{trisomy21risk}
-~~ An overview of how to use the package, including the most important ~~
-~~ functions ~~
+  \packageDESCRIPTION{trisomy21risk}
 }
 \author{
 \packageAuthor{trisomy21risk}
-
-Maintainer: \packageMaintainer{trisomy21risk}
 }
 \references{
-~~ Literature or other references for background information ~~
+  Merz, E., C. Thode, B. Eiben, and S. Wellek. 2016. “Prenatal Risk
+  Calculation (PRC) 3.0: An Extended Doe-Based First-Trimester Screening
+  Algorithm Allowing for Early Blood Sampling.” Ultrasound International
+  Open 2: E19–E26. doi:10.1055/s-0035-1569403.
 }
-~~ Optionally other standard keywords, one per line, from file KEYWORDS in ~~
-~~ the R documentation directory ~~
-\keyword{ package }
-\seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-}
-\examples{
-~~ simple examples of the most important functions ~~
-}
+

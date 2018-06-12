@@ -7,10 +7,10 @@
 crl2gestage(crl)
 }
 \arguments{
-\item{gestage}{Gestational age (in days)}
+\item{crl}{Crown-rump-length (in mm)}
 }
 \value{
-Crown-rump-length (in mm)
+gestational age (in weeks)
 }
 \description{
 Reverse function of gestage2crl

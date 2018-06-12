@@ -7,13 +7,16 @@
 doe_inv(doe, y_pred, ref_lower, ref_upper)
 }
 \arguments{
+\item{doe}{The observed degree of extremeness value}
+
 \item{y_pred}{This is the model based expected value}
 
-\item{ref_lower}{Lower value of the reference band, i.e. the 5% quantile value}
+\item{ref_lower}{Lower value of the reference band, i.e. the 5th percentile value}
 
-\item{ref_upper}{Upper value of the reference band, i.e. the 95% quantile value}
-
-\item{y}{The observed value}
+\item{ref_upper}{Upper value of the reference band, i.e. the 95th percentile value}
+}
+\value{
+The corresponding y value
 }
 \description{
 Inverse function of the DoE (Degrees of Extremeness), i.e. compute observed value given DoE

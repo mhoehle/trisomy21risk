@@ -17,11 +17,13 @@ trisomy21(age, weight, crlbe, crl, nt, pappa, betahCG, nasalbone, background)
 
 \item{crl}{Crown-rump-length (in mm) at the time of the NT measurement}
 
+\item{nt}{nuchal translucency of the fetus (in mm)}
+
 \item{pappa}{Measured value of PAPP-A in maternal serum (in miU/ml)}
 
 \item{betahCG}{Measured value of betahCG in maternal serum (in miU/ml)}
 
-\item{nasalbone}{Visibility of a nasal bone on the ultrasound (Boolean)}
+\item{nasalbone}{Visibility of a nasal bone on the ultrasound (0/1 or "Unknown")}
 
 \item{background}{Background probability for T21}
 }
@@ -34,5 +36,5 @@ and visibility of the nasal bone on the ultrasound. Several covariates (age of m
 are taken into account.
 }
 \references{
-Merz, E., C. Thode, B. Eiben, and S. Wellek. 2016. “Prenatal Risk Calculation (PRC) 3.0: An Extended Doe-Based First-Trimester Screening Algorithm Allowing for Early Blood Sampling.” Ultrasound International Open 2: E19–E26. doi:10.1055/s-0035-1569403.
+Merz, E., C. Thode, B. Eiben, and S. Wellek. 2016. "Prenatal Risk Calculation (PRC) 3.0: An Extended Doe-Based First-Trimester Screening Algorithm Allowing for Early Blood Sampling." Ultrasound International Open 2: E19–E26. doi:10.1055/s-0035-1569403.
 }

@@ -68,7 +68,7 @@ ui <- fluidPage(
                    p(),
                    "The statistical details of the Bayesian diagnostic test procedure of the form ",p(),
                    p("posterior odds = likelihood ratio × prior odds",style="margin-left: 120px"),
-                   "can be found in Merz et al. (2016) and the blog entry ",a(href="http://staff.math.su.se/hoehle/blog/2018/06/13/prc.html","First Trimester Combined Testing for Trisomy 21."), "by", a(href="http://www.math.su.se/~hoehle","M. Höhle."),  
+                   "can be found in Merz et al. (2016) and the blog entry ",a(href="http://staff.math.su.se/hoehle/blog/2018/06/13/prc.html","First Trimester Combined Testing for Trisomy 21."), "written by", a(href="http://www.math.su.se/~hoehle","M. Höhle."),  
                    "The R code for the calculations as well as the Shiny App are available under an open-source GPL v3.0 license as part of the ", a(href="https://github.com/hoehleatsu/trisomy21risk",code("trisomy21risk")), "package available from github.",
                    p(),
                    "The background risk by maternal age and week of gestation is taken from Table 4 of the paper ",
@@ -87,7 +87,7 @@ ui <- fluidPage(
                    a(href="https://fetalmedicine.org/research/assess/trisomies","trisomies risk assessment calculator."),
                    p(),
                    h3("Disclaimer"),
-                   "Aim of the present app is to visualize the information provided by the three biomarkers for educational and transparency purposes. The app provides comparable, but in no way identical, values to the PRC 3.0 software. Please note: Use of the app is no replacement for a calculation performed by such software nor for the subsequent consultation with a gynaecologist about the findings. Absolutely no warranty is given for the results."
+                   "Aim of the present app is to visualize the information provided by the three biomarkers for educational and transparency purposes. The app provides comparable, but in no way identical, values to the PRC 3.0 software. Please note: Use of the app is no replacement for a calculation performed by such software nor for the subsequent consultation with a gynaecologist about the findings. Absolutely no warranty is given for the results. Feedback is very much appretiated."
           )
         ))
    )
@@ -179,7 +179,7 @@ server <- function(input, output, session) {
        1/(7 * (doe(y, y_pred=y_pred, ref_lower=y_ref[1], ref_upper=y_ref[2])+2.5)^(6/7)) * r
      }
      
-     p <- plotLR("nt", "NT", "NT [mm]", eu=eu, aneu=aneu, res21=res21, f=f, f_inv=f_inv, diff_f_inv=diff_f_inv, f_obs=identity)
+     p <- plotLR("nt", "NT", "NT [mm]", eu=eu, aneu=aneu, res21=res21, f=f, f_inv=f_inv, diff_f_inv=diff_f_inv)
      plotly::ggplotly(p)
    })
    
