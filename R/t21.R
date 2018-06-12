@@ -129,7 +129,7 @@ crl2gestage <- function(crl) {
 #' @return dnorm(x, mean=eu[1], sd=eu[2]) / dnorm(x, mean=aneu[1], sd=aneu[2])
 #' @export
 lr <- function(x, eu, aneu) {
-  eu[2] / aneu[2] * exp(-0.5*((x-aneu[1])/aneu[2])^2 + 0.5*((x-eu[1])/eu[2])^2)
+  as.numeric(eu[2] / aneu[2] * exp(-0.5*((x-aneu[1])/aneu[2])^2 + 0.5*((x-eu[1])/eu[2])^2))
 }
 
 #' Compute posterior distribution for an event using the formula:
@@ -215,7 +215,7 @@ logbetahCG_corr <- function(betahCG, weight) {
 #' @param crl Crown-rump-length (in mm) at the time of the NT measurement
 #' @param pappa Measured value of PAPP-A in maternal serum (in miU/ml)
 #' @param betahCG Measured value of betahCG in maternal serum (in miU/ml)
-#' @param nasalbone Visibility of a nasal bone on the ultrasound (Boolean)
+#' @param nasalbone Visibility of a nasal bone on the ultrasound (0/1 or "Unknown")
 #' @param background Background probability for T21
 #' @return Posterior risk of T21.
 #' @references  
