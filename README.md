@@ -26,7 +26,11 @@ To demo the package run the Shiny App by:
     library(trisomy21risk)
     trisomy21risk::runExample()
 
-Instead of installing the package one can also run the Shiny App directly from [https://hoehle.shinyapps.io/t21app/](https://hoehle.shinyapps.io/t21app/).
+Instead of installing the package one can also run the Shiny App directly from
+
+<center>
+    [https://hoehle.shinyapps.io/t21app/](https://hoehle.shinyapps.io/t21app/)
+</center>    
 
 
 ## Screenshot of the Shiny App
