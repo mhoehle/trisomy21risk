@@ -130,7 +130,7 @@ crl2gestage <- function(crl) {
 #' @param x measured value
 #' @param eu eucaryte (i.e. value in non-diseased population)
 #' @param aneu anormal eucaryte (i.e. value in diseased population)
-#' @return dnorm(x, mean=eu[1], sd=eu[2]) / dnorm(x, mean=aneu[1], sd=aneu[2])
+#' @return dnorm(x, mean=aneu[1], sd=aneu[2]) / dnorm(x, mean=eu[1], sd=eu[2])
 #' @export
 lr <- function(x, eu, aneu) {
   as.numeric(eu[2] / aneu[2] * exp(-0.5*((x-aneu[1])/aneu[2])^2 + 0.5*((x-eu[1])/eu[2])^2))

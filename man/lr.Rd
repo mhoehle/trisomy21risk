@@ -14,7 +14,7 @@ lr(x, eu, aneu)
 \item{aneu}{anormal eucaryte (i.e. value in diseased population)}
 }
 \value{
-dnorm(x, mean=eu[1], sd=eu[2]) / dnorm(x, mean=aneu[1], sd=aneu[2])
+dnorm(x, mean=aneu[1], sd=aneu[2]) / dnorm(x, mean=eu[1], sd=eu[2])
 }
 \description{
 Likelihood ratio between two univariate normal distributions
