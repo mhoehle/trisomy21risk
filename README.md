@@ -28,9 +28,9 @@ To demo the package run the Shiny App by:
 
 Instead of installing the package one can also run the Shiny App directly from
 
-<center>
+
     [https://hoehle.shinyapps.io/t21app/](https://hoehle.shinyapps.io/t21app/)
-</center>    
+   
 
 
 ## Screenshot of the Shiny App
