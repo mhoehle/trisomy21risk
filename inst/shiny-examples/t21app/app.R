@@ -68,7 +68,7 @@ ui <- fluidPage(
                    p(),
                    "The statistical details of the Bayesian diagnostic test procedure of the form ",p(),
                    p("posterior odds = likelihood ratio × prior odds",style="margin-left: 120px"),
-                   "can be found in Merz et al. (2016) and the blog entry ",a(href="http://staff.math.su.se/hoehle/blog/2018/06/13/prc.html","First Trimester Combined Testing for Trisomy 21."), "written by", a(href="http://www.math.su.se/~hoehle","M. Höhle."),  
+                   "can be found in Merz et al. (2016) and the blog entry ",a(href="http://staff.math.su.se/hoehle/blog/2018/06/14/prc.html","Retracing Prenatal Testing Algorithms"), "written by", a(href="http://www.math.su.se/~hoehle","M. Höhle."),  
                    "The R code for the calculations as well as the Shiny App are available under an open-source GPL v3.0 license as part of the ", a(href="https://github.com/hoehleatsu/trisomy21risk",code("trisomy21risk")), "package available from github.",
                    p(),
                    "The background risk by maternal age and week of gestation is taken from Table 4 of the paper ",
