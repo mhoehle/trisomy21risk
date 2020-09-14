@@ -29,7 +29,7 @@ To demo the package run the Shiny App by:
 Instead of installing the package one can also run the Shiny App directly from
 [https://hoehle.shinyapps.io/t21app/](https://hoehle.shinyapps.io/t21app/).
 
-
+For further details about the classification algorithm and the motivation to write such a shiny app see the blog post [Retracing prenatal testing algorithms ](https://staff.math.su.se/hoehle/blog/2018/06/14/prc.html).
 
 ## Screenshots of the Shiny App
 
